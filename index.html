@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#546A3E">
+  <title>Ardentri — A Single-Elimination Tournament Bracket System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#welcome" aria-label="Ardentri home" id="brandHome">
+      <img class="brand-mark" src="assets/ardentri-up.svg" alt="Ardentri Logo">
+        <span class="brand-copy"><strong>ARDENTRI</strong><small>A SINGLE-ELIMINATION TOURNAMENT BRACKET SYSTEM</small></span>
+      </a>
+      <div class="topbar-note"><span class="status-dot"></span> EVERY MATCH. ONE CHAMPION.</div>
+    </header>
+
+    <main>
+      <section class="screen welcome-screen active" id="welcomeScreen" aria-labelledby="welcomeTitle">
+        <div class="welcome-copy">
+          <p class="eyebrow">YOUR TOURNAMENT STARTS HERE</p>
+          <h1 id="welcomeTitle">Every match.<br><span>One champion.</span></h1>
+          <p class="intro-copy">Organize your tournament, follow every round, and watch winners advance until one champion remains.</p>
+          <button class="button button-primary button-large" id="beginButton">Create a tournament <span aria-hidden="true">→</span></button>
+          <div class="feature-list">
+            <div><b>01</b><span>Build a structured bracket</span></div>
+            <div><b>02</b><span>Advance winners round by round</span></div>
+            <div><b>03</b><span>Review history and search teams</span></div>
+          </div>
+        </div>
+        <div class="welcome-art">
+      <img class="welcome-art-image" src="assets/ardentri-logo.png" alt="Ardentri Logo">
+      </div>
+      </section>
+
+      <section class="screen content-screen" id="setupScreen" aria-labelledby="setupTitle" hidden>
+        <div class="page-heading">
+          <p class="eyebrow">STEP 01 / TOURNAMENT SETUP</p>
+          <h1 id="setupTitle">Set up your tournament</h1>
+          <p class="page-description">Give your competition a name and choose how many teams will compete.</p>
+        </div>
+        <form id="setupForm" class="form-panel">
+          <label class="field-label" for="tournamentName">Tournament name <span class="optional">OPTIONAL</span></label>
+          <input id="tournamentName" name="tournamentName" type="text" maxlength="70" placeholder="e.g. BPSU Uniwide Intramurals" autocomplete="off">
+
+          <div class="section-heading sport-section-heading">
+            <span class="field-label">Choose a sport</span>
+            <span class="selection-hint">SELECT ONE</span>
+          </div>
+          <div class="sport-options" role="radiogroup" aria-label="Tournament sport">
+            <label class="sport-option">
+              <input type="radio" name="sport" value="Basketball" checked>
+              <img src="assets/sports/basketball.svg" alt="" class="sport-thumb">
+              <span>Basketball</span>
+            </label>
+            <label class="sport-option">
+              <input type="radio" name="sport" value="Volleyball">
+              <img src="assets/sports/volleyball.png" alt="" class="sport-thumb">
+              <span>Volleyball</span>
+            </label>
+            <label class="sport-option">
+              <input type="radio" name="sport" value="Football">
+              <img src="assets/sports/football.png" alt="" class="sport-thumb">
+              <span>Football</span>
+            </label>
+            <label class="sport-option">
+              <input type="radio" name="sport" value="Badminton">
+              <img src="assets/sports/badminton.png" alt="" class="sport-thumb">
+              <span>Badminton</span>
+            </label>
+            <label class="sport-option">
+              <input type="radio" name="sport" value="Esports">
+              <img src="assets/sports/esports.svg" alt="" class="sport-thumb">
+              <span>Esports</span>
+            </label>
+            <label class="sport-option">
+              <input type="radio" name="sport" value="Other">
+              <img src="assets/sports/other.svg" alt="" class="sport-thumb">
+              <span>Other</span>
+            </label>
+          </div>
+          <div class="custom-sport-field" id="customSportField" hidden>
+            <label class="field-label" for="customSportName">Custom sport name</label>
+            <input id="customSportName" name="customSportName" type="text" maxlength="50" placeholder="e.g. Table Tennis" autocomplete="off">
+          </div>
+
+          <div class="section-heading"><span class="field-label">Number of teams</span><span class="selection-hint">SELECT ONE</span></div>
+          <div class="size-options" role="radiogroup" aria-label="Number of teams">
+            <label class="size-option">
+              <input type="radio" name="teamSize" value="4" checked>
+              <span class="size-number">04</span>
+              <span class="size-label">Teams</span>
+              <span class="size-detail">3 matches</span>
+            </label>
+            <label class="size-option">
+              <input type="radio" name="teamSize" value="8">
+              <span class="size-number">08</span>
+              <span class="size-label">Teams</span>
+              <span class="size-detail">7 matches</span>
+            </label>
+            <label class="size-option">
+              <input type="radio" name="teamSize" value="16">
+              <span class="size-number">16</span>
+              <span class="size-label">Teams</span>
+              <span class="size-detail">15 matches</span>
+            </label>
+          </div>
+          <div class="form-actions">
+            <button class="button button-quiet" type="button" id="setupBackButton">Back</button>
+            <button class="button button-primary" type="submit">Continue to teams <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="screen content-screen" id="teamsScreen" aria-labelledby="teamsTitle" hidden>
+        <div class="page-heading">
+          <p class="eyebrow">STEP 02 / TEAM DETAILS</p>
+          <h1 id="teamsTitle">Name your teams</h1>
+          <p class="page-description">Team names must be filled in and unique, even if capitalization differs.</p>
+        </div>
+        <div class="team-panel">
+          <div class="team-panel-heading">
+            <div>
+              <span class="field-label" id="teamCountLabel">TEAM NAMES</span>
+              <p class="helper-text">Use your real team names or quick-fill placeholders.</p>
+            </div>
+            <span class="team-count" id="teamCountBadge">04 TEAMS</span>
+          </div>
+          <div class="team-fields" id="teamFields"></div>
+          <div class="team-tools">
+            <button class="button button-secondary" type="button" id="quickFillButton">✦ Quick Fill Names</button>
+            <button class="button button-outline" type="button" id="clearNamesButton">⌫ Clear All Names</button>
+          </div>
+          <p class="form-message" id="teamMessage" role="status" aria-live="polite"></p>
+          <div class="form-actions">
+            <button class="button button-quiet" type="button" id="teamsBackButton">Back</button>
+            <button class="button button-primary" type="button" id="generateButton">Generate bracket <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen tournament-screen" id="tournamentScreen" aria-labelledby="tournamentHeading" hidden>
+        <header class="tournament-header">
+          <div class="tournament-heading-copy">
+            <p class="eyebrow">ARDENTRI / LIVE TOURNAMENT</p>
+            <h1 id="tournamentHeading">Tournament</h1>
+            <p id="tournamentSubtitle" class="page-description">8-team single-elimination tournament</p>
+          </div>
+          <div class="header-actions">
+            <button class="button button-outline button-small" id="printBracketButton" type="button">▤ Print bracket</button>
+            <button class="button button-outline button-small" id="undoButton" disabled>↶ Undo last match</button>
+            <button class="button button-secondary button-small" id="newTournamentButton">New tournament</button>
+          </div>
+          <div class="progress-area">
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+            <span id="progressLabel">0 / 7 matches completed</span>
+          </div>
+        </header>
+        <nav class="tabs" aria-label="Tournament sections" role="tablist">
+          <button class="tab active" type="button" role="tab" aria-selected="true" data-tab="bracket">Bracket</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="history">Match History <span class="tab-count" id="historyCount">0</span></button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="search">Search Team</button>
+        </nav>
+        <section class="tab-panel active" id="bracketPanel" role="tabpanel">
+          <div class="panel-intro">
+            <div>
+              <h2>Competition bracket</h2>
+              <p>Choose a winner in each ready match to advance them to the next round.</p>
+            </div>
+            <span class="legend"><i></i> Winner's path</span>
+          </div>
+          <div class="bracket-scroll" id="bracketScroll">
+            <div class="bracket-canvas" id="bracketCanvas"></div>
+          </div>
+          <p class="bracket-hint">On smaller screens, scroll horizontally to view every round.</p>
+          <div class="champion-result" id="championResult" hidden></div>
+        </section>
+        <section class="tab-panel" id="historyPanel" role="tabpanel" hidden>
+          <div class="panel-intro">
+            <div>
+              <h2>Match history</h2>
+              <p>Completed results are listed newest first.</p>
+            </div>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </section>
+        <section class="tab-panel" id="searchPanel" role="tabpanel" hidden>
+          <div class="panel-intro">
+            <div>
+              <h2>Find a team</h2>
+              <p>Search for an exact team name to check its current tournament status.</p>
+            </div>
+          </div>
+          <form class="search-form" id="searchForm">
+            <label class="sr-only" for="teamSearchInput">Team name</label>
+            <input id="teamSearchInput" type="search" placeholder="e.g. Team Alpha" autocomplete="off">
+            <button class="button button-primary" type="submit">Search</button>
+          </form>
+          <div id="searchResult" class="search-result" hidden></div>
+        </section>
+
+      </section>
+    </main>
+    <footer class="footer">
+      <span>ARDENTRI</span>
+      <span>A SINGLE-ELIMINATION TOURNAMENT BRACKET SYSTEM</span>
+    </footer>
+  </div>
+
+  <dialog id="confirmDialog" class="confirm-dialog">
+    <form method="dialog">
+      <p class="eyebrow">CONFIRM ACTION</p>
+      <h2 id="dialogTitle">Are you sure?</h2>
+      <p id="dialogMessage"></p>
+      <div class="dialog-actions">
+        <button class="button button-quiet" value="cancel">Cancel</button>
+        <button class="button button-primary" id="dialogConfirm" value="confirm">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+  
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="tree.js"></script>
+  <script src="manager.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
