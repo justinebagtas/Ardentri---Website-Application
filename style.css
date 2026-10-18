@@ -1,3 +1,12 @@
+
+/* =========================================================
+   ARDENTRI — SINGLE-ELIMINATION TOURNAMENT BRACKET SYSTEM
+   Clean stylesheet
+   ========================================================= */
+
+/* 1. COLOR PALETTE AND GLOBAL STYLES
+   ========================================================= */
+
 :root {
   --cream: #f5f0e1;
   --paper: #fffcf4;
@@ -11,7 +20,7 @@
   --muted: #6f7464;
   --border: #e5dcc7;
   --line: #cfc6b2;
-  --shadow: 0 14px 40px rgba(48, 58, 39, .09);
+  --shadow: 0 14px 40px rgba(48, 58, 39, 0.09);
 }
 
 * {
@@ -26,12 +35,14 @@ body {
   margin: 0;
   background: #faf9f6;
   color: var(--ink);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 15px;
   line-height: 1.5;
 }
 
-button, input {
+button,
+input {
   font: inherit;
 }
 
@@ -41,11 +52,13 @@ button {
 
 button:disabled {
   cursor: not-allowed;
-  opacity: .48;
+  opacity: 0.48;
 }
 
-button:focus-visible, input:focus-visible, a:focus-visible {
-  outline: 3px solid rgba(217, 93, 57, .45);
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(217, 93, 57, 0.45);
   outline-offset: 3px;
 }
 
@@ -55,8 +68,17 @@ button:focus-visible, input:focus-visible, a:focus-visible {
   flex-direction: column;
 }
 
+main {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+/* 2. HEADER AND BRANDING
+   ========================================================= */
+
 .topbar {
-  height: auto;
   min-height: 80px;
   padding: 15px clamp(18px, 4vw, 58px);
   display: flex;
@@ -71,22 +93,21 @@ button:focus-visible, input:focus-visible, a:focus-visible {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
   color: inherit;
   text-decoration: none;
-  min-width: 0;
 }
 
 .brand-mark {
+  display: block;
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
-  display: grid;
-  place-items: center;
+  object-fit: contain;
   border-radius: 14px;
   background: var(--green);
   color: var(--cream);
-  font-size: 25px;
-  font-weight: 900;
-  box-shadow: inset 0 -3px rgba(0, 0, 0, .08);
+  box-shadow: inset 0 -3px rgba(0, 0, 0, 0.08);
 }
 
 .brand-copy {
@@ -97,44 +118,41 @@ button:focus-visible, input:focus-visible, a:focus-visible {
 }
 
 .brand-copy strong {
+  color: var(--green);
   font-size: 20px;
   letter-spacing: 2px;
-  color: var(--green);
   line-height: 1.2;
 }
 
 .brand-copy small {
-  font-size: 9px;
-  letter-spacing: 1.1px;
-  font-weight: 800;
   color: var(--muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
 }
 
 .topbar-note {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--green-dark);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 1.2px;
-  color: var(--muted);
   white-space: nowrap;
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: var(--rust);
-  box-shadow: 0 0 0 4px rgba(217, 93, 57, .12);
+  box-shadow: 0 0 0 4px rgba(217, 93, 57, 0.12);
 }
 
-main {
-  width: 100%;
-  max-width: 1500px;
-  margin: 0 auto;
-  flex: 1;
-}
+/* 3. SCREEN NAVIGATION AND WELCOME SCREEN
+   ========================================================= */
 
 .screen {
   display: none;
@@ -149,14 +167,15 @@ main {
 }
 
 .welcome-screen {
-  grid-template-columns: minmax(0, 1fr) minmax(340px, .9fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   align-items: center;
   gap: clamp(28px, 5vw, 76px);
-  padding: clamp(38px, 7vw, 88px) clamp(22px, 7vw, 96px) 70px;
   min-height: 620px;
+  padding: clamp(38px, 7vw, 88px) clamp(22px, 7vw, 96px) 70px;
 }
 
 .welcome-copy {
+  order: 1;
   max-width: 610px;
 }
 
@@ -169,13 +188,21 @@ main {
   text-transform: uppercase;
 }
 
+.welcome-copy > .eyebrow {
+  margin-bottom: 16px;
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 1.4px;
+}
+
 .welcome-copy h1 {
   margin: 0;
   color: var(--green);
   font-size: clamp(42px, 6vw, 72px);
+  font-weight: 900;
   line-height: 1.02;
   letter-spacing: -2.8px;
-  font-weight: 900;
 }
 
 .welcome-copy h1 span {
@@ -191,77 +218,8 @@ main {
 }
 
 .microcopy {
-  font-size: 12px;
-  color: var(--muted);
   margin: 14px 0 26px;
-}
-
-.button {
-  border: 0;
-  border-radius: 10px;
-  padding: 12px 17px;
-  min-height: 44px;
-  font-weight: 800;
-  font-size: 13px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: transform .15s, background .15s, border-color .15s;
-}
-
-.button:hover:not(:disabled) {
-  transform: translateY(-1px);
-}
-
-.button-primary {
-  background: var(--green);
-  color: var(--cream);
-  box-shadow: 0 5px 14px rgba(84, 106, 62, .16);
-}
-
-.button-primary:hover:not(:disabled) {
-  background: var(--green-dark);
-}
-
-.button-secondary {
-  background: var(--sand);
-  color: var(--ink);
-}
-
-.button-secondary:hover:not(:disabled) {
-  background: #e98a3f;
-}
-
-.button-outline {
-  border: 1px solid #d9cfba;
-  background: var(--paper);
-  color: var(--green);
-}
-
-.button-outline:hover:not(:disabled) {
-  background: var(--cream);
-}
-
-.button-quiet {
-  background: transparent;
   color: var(--muted);
-  border: 1px solid transparent;
-}
-
-.button-quiet:hover:not(:disabled) {
-  background: #eeeadd;
-}
-
-.button-large {
-  min-height: 52px;
-  padding: 14px 21px;
-  font-size: 14px;
-}
-
-.button-small {
-  min-height: 38px;
-  padding: 9px 12px;
   font-size: 12px;
 }
 
@@ -271,38 +229,59 @@ main {
   margin-top: 22px;
 }
 
-.feature-list>div {
+.feature-list > div {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 13px;
   color: #4f5845;
+  font-size: 13px;
 }
 
 .feature-list b {
-  width: 30px;
-  height: 28px;
   display: grid;
   place-items: center;
-  background: var(--sand);
+  width: 30px;
+  height: 28px;
   border-radius: 8px;
+  background: var(--sand);
   font-size: 11px;
 }
 
+/* Welcome artwork container */
+.welcome-art {
+  position: relative;
+  order: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 400px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 30px;
+  background: var(--green);
+}
+
+/* Welcome image: constrained so it cannot fill the
+   entire container at an uncontrolled size. */
 .welcome-art-image {
   display: block;
   width: 100%;
-  max-width: 380px;
-  max-height: 380px;
+  max-width: 360px;
+  max-height: 360px;
   height: auto;
   object-fit: contain;
+  padding: 0;
   margin: 0 auto;
+  border-radius: 20px;
 }
+
+/* Optional decorative tree artwork */
 .art-orbit {
   position: absolute;
-  border: 1px solid rgba(84, 106, 62, .18);
-  border-radius: 50%;
   aspect-ratio: 1;
+  border: 1px solid rgba(84, 106, 62, 0.18);
+  border-radius: 50%;
 }
 
 .orbit-one {
@@ -324,28 +303,29 @@ main {
   z-index: 2;
   display: grid;
   place-items: center;
+  border: 3px solid var(--cream);
   background: var(--green);
   color: var(--cream);
   font-size: 10px;
   font-weight: 900;
-  letter-spacing: .7px;
-  border: 3px solid var(--cream);
-  box-shadow: 0 4px 10px rgba(48, 58, 39, .12);
+  letter-spacing: 0.7px;
+  box-shadow: 0 4px 10px rgba(48, 58, 39, 0.12);
 }
 
 .root-node {
+  top: 28px;
+  left: 118px;
   width: 74px;
   height: 43px;
-  left: 118px;
-  top: 28px;
   border-radius: 12px;
   background: var(--rust);
 }
 
-.node-left, .node-right {
+.node-left,
+.node-right {
+  top: 125px;
   width: 66px;
   height: 38px;
-  top: 125px;
   border-radius: 11px;
 }
 
@@ -358,9 +338,9 @@ main {
 }
 
 .leaf {
+  top: 231px;
   width: 46px;
   height: 40px;
-  top: 231px;
   border-radius: 12px;
   background: #718457;
 }
@@ -384,13 +364,14 @@ main {
 .tree-branch {
   position: absolute;
   background: var(--green);
-  opacity: .55;
+  opacity: 0.55;
 }
 
-.branch-left, .branch-right {
-  height: 2px;
-  width: 96px;
+.branch-left,
+.branch-right {
   top: 103px;
+  width: 96px;
+  height: 2px;
 }
 
 .branch-left {
@@ -405,10 +386,13 @@ main {
   transform-origin: left;
 }
 
-.leaf-left-a, .leaf-left-b, .leaf-right-a, .leaf-right-b {
-  height: 2px;
-  width: 54px;
+.leaf-left-a,
+.leaf-left-b,
+.leaf-right-a,
+.leaf-right-b {
   top: 206px;
+  width: 54px;
+  height: 2px;
 }
 
 .leaf-left-a {
@@ -439,12 +423,12 @@ main {
   position: absolute;
   right: -12px;
   bottom: 8px;
+  display: grid;
+  place-items: center;
   width: 62px;
   height: 62px;
   border-radius: 20px;
   background: var(--sand);
-  display: grid;
-  place-items: center;
   color: var(--green);
   font-size: 34px;
   transform: rotate(9deg);
@@ -453,58 +437,137 @@ main {
 
 .art-caption {
   position: absolute;
+  right: 0;
   bottom: 23px;
   left: 0;
-  right: 0;
-  text-align: center;
+  color: var(--green);
   font-size: 9px;
   font-weight: 900;
   letter-spacing: 2.5px;
+  text-align: center;
+}
+
+/* 4. BUTTONS
+   ========================================================= */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: none;
+}
+
+.button:hover:not(:disabled) {
+  transform: none;
+}
+
+.button-primary {
+  background: var(--green);
+  color: var(--cream);
+  box-shadow: 0 5px 14px rgba(84, 106, 62, 0.16);
+}
+
+.button-primary:hover:not(:disabled) {
+  background: var(--green-dark);
+}
+
+.button-secondary {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.button-secondary:hover:not(:disabled) {
+  background: #e98a3f;
+}
+
+.button-outline {
+  border: 1px solid #d9cfba;
+  background: var(--paper);
   color: var(--green);
 }
 
+.button-outline:hover:not(:disabled) {
+  background: var(--cream);
+}
+
+.button-quiet {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+}
+
+.button-quiet:hover:not(:disabled) {
+  background: #eeeadd;
+}
+
+.button-large {
+  min-height: 52px;
+  padding: 14px 21px;
+  font-size: 14px;
+}
+
+.button-small {
+  min-height: 38px;
+  padding: 9px 12px;
+  font-size: 12px;
+}
+
+/* 5. PAGE HEADINGS AND GENERAL FORMS
+   ========================================================= */
+
 .content-screen {
-  padding: clamp(28px, 5vw, 62px) clamp(18px, 5vw, 64px) 72px;
   max-width: 900px;
   margin: 0 auto;
+  padding: clamp(28px, 5vw, 62px) clamp(18px, 5vw, 64px) 72px;
 }
 
 .page-heading {
   margin-bottom: 28px;
 }
 
-.page-heading h1, .tournament-heading-copy h1 {
+.page-heading h1,
+.tournament-heading-copy h1 {
+  margin: 0 0 12px;
+  color: var(--green);
   font-size: clamp(30px, 4vw, 43px);
+  font-weight: 900;
   line-height: 1.12;
   letter-spacing: -1.2px;
-  color: var(--green);
-  margin: 0 0 12px;
-  font-weight: 900;
 }
 
 .page-description {
-  color: var(--muted);
   margin: 0;
+  color: var(--muted);
   line-height: 1.65;
 }
 
-.form-panel, .team-panel, .summary-panel {
-  background: var(--paper);
+.form-panel,
+.team-panel,
+.summary-panel {
+  padding: clamp(22px, 4vw, 38px);
   border: 1px solid var(--border);
   border-radius: 22px;
-  padding: clamp(22px, 4vw, 38px);
+  background: var(--paper);
   box-shadow: var(--shadow);
 }
 
 .field-label {
   display: block;
+  margin-bottom: 9px;
   color: var(--green);
   font-size: 13px;
   font-weight: 850;
-  margin-bottom: 9px;
 }
 
-.optional, .selection-hint {
+.optional,
+.selection-hint {
   float: right;
   color: var(--muted);
   font-size: 9px;
@@ -512,20 +575,24 @@ main {
   letter-spacing: 1px;
 }
 
-.form-panel>input, .team-field input, .search-form input {
+.form-panel > input,
+.team-field input,
+.search-form input {
   width: 100%;
   min-height: 47px;
-  border: 1px solid #d8cdb5;
-  background: #fffef9;
-  border-radius: 10px;
   padding: 12px 14px;
-  color: var(--ink);
+  border: 1px solid #d8cdb5;
+  border-radius: 10px;
   outline: none;
+  background: #fffef9;
+  color: var(--ink);
 }
 
-.form-panel>input:focus, .team-field input:focus, .search-form input:focus {
+.form-panel > input:focus,
+.team-field input:focus,
+.search-form input:focus {
   border-color: var(--rust);
-  box-shadow: 0 0 0 3px rgba(217, 93, 57, .1);
+  box-shadow: 0 0 0 3px rgba(217, 93, 57, 0.1);
 }
 
 .section-heading {
@@ -539,6 +606,90 @@ main {
   margin: 0;
 }
 
+/* 6. SPORT SELECTOR
+   ========================================================= */
+
+.sport-section-heading {
+  margin-top: 25px;
+}
+
+.sport-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sport-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 72px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fffef9;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.sport-option input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.sport-option:has(input:checked) {
+  border: 2px solid var(--green);
+  background: var(--green-soft);
+  box-shadow: inset 0 0 0 1px rgba(84, 106, 62, 0.04);
+}
+
+.sport-option:has(input:focus-visible) {
+  outline: 3px solid rgba(217, 93, 57, 0.4);
+  outline-offset: 3px;
+}
+
+.sport-thumb {
+  display: block;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.custom-sport-field {
+  margin-top: 16px;
+}
+
+.custom-sport-field[hidden] {
+  display: none !important;
+}
+
+.custom-sport-field input {
+  width: 100%;
+  min-height: 47px;
+  padding: 12px 14px;
+  border: 1px solid #d8cdb5;
+  border-radius: 10px;
+  background: #fffef9;
+  color: var(--ink);
+}
+
+.custom-sport-field input:focus {
+  border-color: var(--rust);
+  outline: 3px solid rgba(217, 93, 57, 0.12);
+}
+
+/* 7. TEAM SIZE OPTIONS
+   ========================================================= */
+
 .size-options {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -547,60 +698,60 @@ main {
 
 .size-option {
   position: relative;
-  min-height: 138px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2px;
+  min-height: 138px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: #fffef9;
   cursor: pointer;
-  transition: border-color .15s, background .15s;
+  transition: none;
 }
 
 .size-option input {
   position: absolute;
-  opacity: 0;
   inset: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
   cursor: pointer;
 }
 
 .size-option:has(input:checked) {
   border: 2px solid var(--green);
   background: var(--green-soft);
-  box-shadow: inset 0 0 0 1px rgba(84, 106, 62, .04);
+  box-shadow: inset 0 0 0 1px rgba(84, 106, 62, 0.04);
 }
 
 .size-option:has(input:focus-visible) {
-  outline: 3px solid rgba(217, 93, 57, .4);
+  outline: 3px solid rgba(217, 93, 57, 0.4);
   outline-offset: 3px;
 }
 
 .size-number {
+  color: var(--green);
   font-size: 35px;
   font-weight: 900;
-  color: var(--green);
   line-height: 1.15;
 }
 
 .size-label {
-  font-weight: 800;
   font-size: 12px;
+  font-weight: 800;
 }
 
 .size-detail {
-  font-size: 11px;
   color: var(--muted);
+  font-size: 11px;
 }
 
 .form-actions {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
   margin-top: 30px;
 }
@@ -608,6 +759,9 @@ main {
 .form-actions .button-primary {
   margin-left: auto;
 }
+
+/* 8. TEAM NAME ENTRY
+   ========================================================= */
 
 .team-panel-heading {
   display: flex;
@@ -628,13 +782,13 @@ main {
 }
 
 .team-count {
+  padding: 8px 10px;
+  border-radius: 8px;
   background: var(--sand-soft);
   color: var(--green);
   font-size: 10px;
   font-weight: 900;
   letter-spacing: 1px;
-  padding: 8px 10px;
-  border-radius: 8px;
   white-space: nowrap;
 }
 
@@ -652,10 +806,10 @@ main {
 }
 
 .team-index {
-  flex: 0 0 32px;
-  height: 34px;
   display: grid;
+  flex: 0 0 32px;
   place-items: center;
+  height: 34px;
   border-radius: 8px;
   background: var(--cream);
   color: var(--rust);
@@ -679,8 +833,8 @@ main {
 .form-message {
   min-height: 22px;
   margin: 12px 0 0;
-  font-size: 12px;
   color: var(--muted);
+  font-size: 12px;
 }
 
 .form-message[data-tone="rust"] {
@@ -691,24 +845,27 @@ main {
   color: var(--green);
 }
 
+/* 9. TOURNAMENT HEADER AND PROGRESS
+   ========================================================= */
+
 .tournament-screen {
-  padding: 0 0 65px;
   max-width: none;
+  padding: 0 0 65px;
 }
 
 .tournament-header {
-  background: var(--paper);
-  padding: 26px clamp(18px, 4vw, 54px) 20px;
-  border-bottom: 1px solid var(--border);
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 10px 25px;
+  padding: 26px clamp(18px, 4vw, 54px) 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--paper);
 }
 
 .tournament-heading-copy h1 {
-  font-size: clamp(26px, 3vw, 36px);
-  overflow-wrap: anywhere;
   margin-bottom: 5px;
+  overflow-wrap: anywhere;
+  font-size: clamp(26px, 3vw, 36px);
 }
 
 .tournament-heading-copy .eyebrow {
@@ -717,15 +874,15 @@ main {
 
 .header-actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
-  flex-wrap: wrap;
 }
 
 .progress-area {
-  grid-column: 1 / -1;
   display: flex;
+  grid-column: 1 / -1;
   align-items: center;
   gap: 15px;
   margin-top: 8px;
@@ -735,35 +892,38 @@ main {
 }
 
 .progress-track {
+  flex: 1;
   height: 7px;
+  overflow: hidden;
   border-radius: 99px;
   background: #e8e3d7;
-  overflow: hidden;
-  flex: 1;
 }
 
 .progress-fill {
-  height: 100%;
   width: 0;
-  background: var(--rust);
+  height: 100%;
   border-radius: 99px;
-  transition: width .2s;
+  background: var(--rust);
+  transition: width 0.2s;
 }
+
+/* 10. TOURNAMENT TABS
+   ========================================================= */
 
 .tabs {
   display: flex;
   gap: 5px;
-  padding: 0 clamp(18px, 4vw, 54px);
-  background: #f4f1e9;
-  border-bottom: 1px solid var(--border);
   overflow-x: auto;
+  padding: 0 clamp(18px, 4vw, 54px);
+  border-bottom: 1px solid var(--green);
+  background: #f4f1e9;
 }
 
 .tab {
+  padding: 15px 14px 12px;
   border: 0;
   border-bottom: 3px solid transparent;
   background: transparent;
-  padding: 15px 14px 12px;
   color: var(--muted);
   font-size: 12px;
   font-weight: 850;
@@ -771,8 +931,8 @@ main {
 }
 
 .tab.active {
-  color: var(--green);
   border-bottom-color: var(--rust);
+  color: var(--green-dark);
 }
 
 .tab-count {
@@ -783,8 +943,8 @@ main {
   margin-left: 4px;
   border-radius: 6px;
   background: var(--sand-soft);
-  font-size: 10px;
   color: var(--green);
+  font-size: 10px;
 }
 
 .tab-panel {
@@ -804,40 +964,43 @@ main {
 }
 
 .panel-intro h2 {
-  font-size: 22px;
-  letter-spacing: -.5px;
-  color: var(--green);
   margin: 0 0 4px;
+  color: var(--green);
+  font-size: 22px;
+  letter-spacing: -0.5px;
 }
 
 .panel-intro p {
-  font-size: 12px;
-  color: var(--muted);
   margin: 0;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .legend {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 10px;
   color: var(--muted);
+  font-size: 10px;
   white-space: nowrap;
 }
 
 .legend i {
   width: 18px;
   height: 3px;
-  background: var(--rust);
   border-radius: 4px;
+  background: var(--rust);
 }
 
+/* 11. TREE BRACKET
+   ========================================================= */
+
 .bracket-scroll {
+  max-width: 100%;
   overflow: auto;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: #faf9f6;
-  max-width: 100%;
   overscroll-behavior-x: contain;
 }
 
@@ -845,7 +1008,10 @@ main {
   position: relative;
   min-width: 100%;
   min-height: 350px;
-  background-image: radial-gradient(rgba(84, 106, 62, .08) .7px, transparent .7px);
+  background-image: radial-gradient(
+    rgba(84, 106, 62, 0.08) 0.7px,
+    transparent 0.7px
+  );
   background-size: 16px 16px;
 }
 
@@ -857,9 +1023,9 @@ main {
 }
 
 .tree-edge {
+  fill: none;
   stroke: var(--line);
   stroke-width: 1.8;
-  fill: none;
   stroke-linecap: round;
 }
 
@@ -879,74 +1045,78 @@ main {
   white-space: nowrap;
 }
 
-.team-leaf-card, .match-card, .champion-card {
+.team-leaf-card,
+.match-card,
+.champion-card {
   position: absolute;
   z-index: 2;
   box-sizing: border-box;
 }
 
 .team-leaf-card {
-  width: 184px;
-  height: 62px;
-  border: 1px solid #d8cdb5;
-  border-radius: 11px;
-  background: var(--paper);
-  padding: 8px 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2px;
-  box-shadow: 0 4px 10px rgba(48, 58, 39, .045);
+  width: 184px;
+  height: 62px;
+  padding: 8px 12px;
+  border: 1px solid #d8cdb5;
+  border-radius: 11px;
+  background: var(--paper);
+  box-shadow: 0 4px 10px rgba(48, 58, 39, 0.045);
 }
 
 .team-leaf-label {
   color: var(--rust);
   font-size: 9px;
-  letter-spacing: .8px;
   font-weight: 900;
+  letter-spacing: 0.8px;
 }
 
 .team-leaf-name {
-  font-size: 13px;
   color: var(--green-dark);
-  overflow-wrap: anywhere;
+  font-size: 13px;
   line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .match-card {
-  width: 216px;
-  min-height: 154px;
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  background: var(--paper);
-  padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  box-shadow: 0 6px 16px rgba(48, 58, 39, .07);
+  width: 216px;
+  min-height: 154px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--green);
+  border-radius: 13px;
+  background: var(--paper);
+  box-shadow: 0 6px 16px rgba(48, 58, 39, 0.07);
 }
 
 .match-card.completed-card {
-  background: var(--green-soft);
   border-color: #b9c9a7;
+  border-top-color: var(--rust);
+  background: var(--green-soft);
 }
 
 .match-heading {
+  color: var(--green);
   font-size: 11px;
   font-weight: 900;
-  color: var(--green);
   line-height: 1.3;
 }
 
 .status-pill {
-  align-self: flex-start;
   display: inline-flex;
-  border-radius: 20px;
+  align-self: flex-start;
   padding: 4px 8px;
+  border-radius: 20px;
   font-size: 9px;
-  letter-spacing: .4px;
   font-weight: 950;
   line-height: 1.2;
+  letter-spacing: 0.4px;
 }
 
 .status-waiting {
@@ -965,18 +1135,18 @@ main {
 }
 
 .matchup-text {
-  font-size: 11px;
-  color: #5b6253;
-  line-height: 1.4;
   margin: 0;
+  color: #5b6253;
+  font-size: 11px;
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
 
 .waiting-copy {
+  margin: 0;
+  color: var(--muted);
   font-size: 10px;
   line-height: 1.45;
-  color: var(--muted);
-  margin: 0;
 }
 
 .winner-actions {
@@ -986,45 +1156,44 @@ main {
 }
 
 .winner-button {
-  border: 1px solid #ebcda9;
+  min-height: 29px;
+  padding: 6px 8px;
+  border: 1px solid var(--green);
   border-radius: 7px;
   background: #fbebda;
   color: #38462d;
-  padding: 6px 8px;
-  min-height: 29px;
   font-size: 10px;
   font-weight: 800;
   text-align: left;
   overflow-wrap: anywhere;
 }
 
-.winner-button:hover {
-  background: var(--sand);
-  border-color: var(--sand);
+.winner-button:hover:not(:disabled) {
+  background: var(--green-soft);
 }
 
 .winner-label {
-  font-size: 12px;
-  color: var(--green);
-  font-weight: 900;
   margin: 0;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 900;
   overflow-wrap: anywhere;
 }
 
 .champion-card {
-  width: 205px;
-  min-height: 176px;
-  border-radius: 15px;
-  background: var(--green);
-  color: var(--cream);
-  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 7px;
+  width: 205px;
+  min-height: 176px;
+  padding: 15px;
+  border-radius: 15px;
+  background: var(--green);
+  color: var(--cream);
   text-align: center;
-  box-shadow: 0 8px 20px rgba(84, 106, 62, .16);
+  box-shadow: 0 8px 20px rgba(84, 106, 62, 0.16);
 }
 
 .champion-icon {
@@ -1038,11 +1207,19 @@ main {
   font-size: 24px;
 }
 
+.champion-trophy {
+  display: block;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
 .champion-heading {
+  color: var(--sand);
   font-size: 9px;
   font-weight: 950;
   letter-spacing: 1px;
-  color: var(--sand);
 }
 
 .champion-name {
@@ -1052,27 +1229,30 @@ main {
 }
 
 .champion-tournament-name {
-  font-size: 10px;
   color: #e6e9dd;
+  font-size: 10px;
   overflow-wrap: anywhere;
 }
 
 .bracket-hint {
-  font-size: 10px;
-  color: var(--muted);
   margin: 9px 2px 0;
+  color: var(--muted);
+  font-size: 10px;
 }
 
 .champion-summary {
   margin-top: 17px;
+  padding: 13px 16px;
   border: 1px solid #c4d2b4;
   border-radius: 12px;
-  padding: 13px 16px;
   background: var(--green-soft);
   color: var(--green);
   font-size: 13px;
   font-weight: 850;
 }
+
+/* 12. MATCH HISTORY
+   ========================================================= */
 
 .history-list {
   display: grid;
@@ -1081,13 +1261,14 @@ main {
 }
 
 .history-card {
+  padding: 17px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--paper);
-  padding: 17px;
 }
 
-.history-card-top, .history-card-bottom {
+.history-card-top,
+.history-card-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1098,18 +1279,28 @@ main {
   margin: 0;
 }
 
-.technical-chip {
-  font-size: 10px;
-  color: var(--muted);
-  background: var(--cream);
+.history-match-number {
+  padding: 4px 8px;
   border-radius: 6px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.technical-chip {
   padding: 4px 7px;
+  border-radius: 6px;
+  background: var(--cream);
+  color: var(--muted);
+  font-size: 10px;
 }
 
 .history-matchup {
-  font-size: 16px;
-  color: var(--green);
   margin: 13px 0;
+  color: var(--green);
+  font-size: 16px;
   font-weight: 850;
   overflow-wrap: anywhere;
 }
@@ -1120,16 +1311,19 @@ main {
 }
 
 .muted-label {
-  font-size: 10px;
   color: var(--muted);
+  font-size: 10px;
 }
 
+/* 13. EMPTY STATES AND SEARCH
+   ========================================================= */
+
 .empty-state {
+  padding: 30px 20px;
   border: 1px dashed #d8cdb5;
   border-radius: 14px;
-  padding: 30px 20px;
+  background: rgba(255, 252, 244, 0.6);
   text-align: center;
-  background: rgba(255, 252, 244, .6);
 }
 
 .empty-state h3 {
@@ -1156,16 +1350,16 @@ main {
 }
 
 .search-result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
   max-width: 650px;
   margin-top: 18px;
+  padding: 22px;
   border: 1px solid var(--border);
   border-radius: 15px;
   background: var(--paper);
-  padding: 22px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  flex-wrap: wrap;
 }
 
 .search-result h3 {
@@ -1183,6 +1377,9 @@ main {
   font-size: 13px;
 }
 
+/* 14. TREE INFORMATION AND TABLES
+   ========================================================= */
+
 .tree-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1191,23 +1388,23 @@ main {
 }
 
 .tree-stat {
-  padding: 14px;
-  border-radius: 12px;
-  background: var(--paper);
-  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--paper);
 }
 
 .tree-stat span {
-  font-size: 10px;
   color: var(--muted);
+  font-size: 10px;
 }
 
 .tree-stat strong {
-  font-size: 20px;
   color: var(--green);
+  font-size: 20px;
   overflow-wrap: anywhere;
 }
 
@@ -1220,21 +1417,22 @@ main {
 }
 
 .tree-table {
-  border-collapse: collapse;
   width: 100%;
   min-width: 750px;
+  border-collapse: collapse;
   font-size: 11px;
 }
 
 .tree-table th {
   background: #ede8da;
   color: var(--green);
-  text-align: left;
   font-size: 10px;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
+  text-align: left;
 }
 
-.tree-table th, .tree-table td {
+.tree-table th,
+.tree-table td {
   padding: 10px 12px;
   border-bottom: 1px solid #eee7d9;
   white-space: nowrap;
@@ -1249,14 +1447,14 @@ main {
 }
 
 .index-cell {
-  font-weight: 900;
   color: var(--rust);
+  font-weight: 900;
 }
 
 .table-status {
   display: inline-block;
-  border-radius: 5px;
   padding: 3px 6px;
+  border-radius: 5px;
   background: var(--cream);
   font-size: 9px;
   font-weight: 900;
@@ -1269,30 +1467,33 @@ main {
   margin-top: 17px;
 }
 
-.formula-grid>div {
+.formula-grid > div {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 13px;
   border-radius: 10px;
   background: var(--green-soft);
-  padding: 13px;
 }
 
 .formula-grid strong {
-  font-size: 10px;
   color: var(--green);
+  font-size: 10px;
 }
 
 .formula-grid code {
-  font-size: 12px;
   color: var(--ink);
+  font-size: 12px;
   font-weight: 800;
 }
 
 .formula-grid span {
-  font-size: 9px;
   color: var(--muted);
+  font-size: 9px;
 }
+
+/* 15. FOOTER, DIALOG, AND NOTIFICATIONS
+   ========================================================= */
 
 .footer {
   display: flex;
@@ -1302,10 +1503,10 @@ main {
   padding: 20px clamp(18px, 4vw, 58px);
   border-top: 1px solid var(--border);
   background: var(--paper);
+  color: var(--muted);
   font-size: 9px;
   font-weight: 900;
   letter-spacing: 1.3px;
-  color: var(--muted);
 }
 
 .footer span:first-child {
@@ -1314,16 +1515,16 @@ main {
 
 .confirm-dialog {
   width: min(460px, calc(100% - 32px));
+  padding: 0;
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 0;
   background: var(--paper);
   color: var(--ink);
-  box-shadow: 0 20px 80px rgba(38, 51, 34, .25);
+  box-shadow: 0 20px 80px rgba(38, 51, 34, 0.25);
 }
 
 .confirm-dialog::backdrop {
-  background: rgba(25, 35, 22, .4);
+  background: rgba(25, 35, 22, 0.4);
   backdrop-filter: blur(2px);
 }
 
@@ -1333,14 +1534,14 @@ main {
 
 .confirm-dialog h2 {
   margin: 0 0 10px;
+  color: var(--green);
   font-size: 24px;
   line-height: 1.2;
-  color: var(--green);
 }
 
 .confirm-dialog p:not(.eyebrow) {
-  font-size: 13px;
   color: var(--muted);
+  font-size: 13px;
   line-height: 1.6;
 }
 
@@ -1356,9 +1557,6 @@ main {
   bottom: 20px;
   left: 50%;
   z-index: 50;
-  transform: translate(-50%, 20px);
-  opacity: 0;
-  pointer-events: none;
   max-width: calc(100% - 32px);
   padding: 12px 18px;
   border-radius: 12px;
@@ -1367,7 +1565,10 @@ main {
   font-size: 12px;
   font-weight: 800;
   box-shadow: var(--shadow);
-  transition: opacity .2s, transform .2s;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 20px);
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .toast.visible {
@@ -1387,306 +1588,360 @@ main {
   border: 0;
 }
 
-@media(max-width: 850px) {
+/* 16. TABLET RESPONSIVENESS
+   ========================================================= */
+
+@media (max-width: 850px) {
   .welcome-screen {
     grid-template-columns: 1fr;
     gap: 25px;
     padding-top: 45px;
   }
+
   .welcome-copy {
     max-width: 700px;
   }
-  .art-orbit.orbit-one {
+
+  .welcome-art {
+    width: 100%;
+    max-width: 600px;
+    min-height: 350px;
+    margin: auto;
+  }
+
+  .welcome-art-image {
+    max-width: 320px;
+    max-height: 320px;
+  }
+
+  .orbit-one {
     width: 320px;
   }
-  .art-orbit.orbit-two {
+
+  .orbit-two {
     width: 245px;
   }
+
   .tournament-header {
     grid-template-columns: 1fr;
   }
+
   .header-actions {
     justify-content: flex-start;
   }
+
   .progress-area {
     grid-column: 1;
   }
+
   .history-list {
     grid-template-columns: 1fr;
   }
+
   .tree-summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
   .formula-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media(max-width: 560px) {
+/* 17. MOBILE RESPONSIVENESS
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .welcome-screen {
+    grid-template-columns: 1fr;
+  }
+
+  .sport-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
   .topbar {
     min-height: 70px;
     padding: 12px 16px;
   }
+
   .brand-mark {
     width: 39px;
     height: 39px;
   }
+
   .brand-copy strong {
     font-size: 17px;
   }
+
   .brand-copy small {
     font-size: 7px;
-    letter-spacing: .7px;
+    letter-spacing: 0.7px;
   }
+
   .topbar-note {
-    font-size: 8px;
-    letter-spacing: .4px;
     max-width: 100px;
+    font-size: 8px;
+    letter-spacing: 0.4px;
     text-align: right;
     white-space: normal;
   }
+
   .welcome-screen {
     padding: 42px 20px 50px;
   }
+
   .welcome-copy h1 {
     font-size: 46px;
     letter-spacing: -1.8px;
   }
+
   .intro-copy {
     font-size: 15px;
   }
-  
-  .tree-illustration {
-    transform: scale(.87);
+
+  .welcome-art {
+    min-height: 280px;
+    border-radius: 22px;
   }
+
+  .welcome-art-image {
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  .tree-illustration {
+    transform: scale(0.87);
+  }
+
   .content-screen {
     padding: 32px 16px 50px;
   }
+
   .page-heading h1 {
     font-size: 31px;
   }
-  .form-panel, .team-panel {
+
+  .form-panel,
+  .team-panel {
     padding: 21px 17px;
   }
+
   .size-options {
     gap: 7px;
   }
+
   .size-option {
     min-height: 122px;
   }
+
   .size-number {
     font-size: 29px;
   }
+
   .size-detail {
     font-size: 10px;
   }
+
   .team-fields {
     grid-template-columns: 1fr;
   }
+
   .team-tools .button {
     flex: 1;
   }
+
   .form-actions {
     gap: 6px;
   }
+
   .form-actions .button {
     padding: 11px 12px;
   }
+
   .tournament-header {
     padding: 22px 16px 17px;
   }
+
   .header-actions {
     gap: 6px;
   }
+
   .header-actions .button {
-    font-size: 10px;
     padding: 8px;
+    font-size: 10px;
   }
+
   .tabs {
     padding: 0 10px;
   }
+
   .tab {
     padding: 14px 11px 11px;
   }
+
   .tab-panel {
     padding: 23px 13px 10px;
   }
+
   .panel-intro {
     align-items: flex-start;
     flex-direction: column;
   }
+
   .panel-intro h2 {
     font-size: 20px;
   }
+
   .search-form {
     align-items: stretch;
   }
+
   .search-form .button {
     padding: 10px 13px;
   }
+
   .tree-summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
   .tree-stat strong {
     font-size: 17px;
   }
+
   .formula-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
   .footer {
     font-size: 8px;
-    letter-spacing: .7px;
+    letter-spacing: 0.7px;
   }
 }
 
-@media(prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+/* 18. ACCESSIBILITY: REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
     scroll-behavior: auto !important;
+    animation: none !important;
     transition: none !important;
   }
 }
 
-.welcome-copy > .eyebrow { font-size: 12px; letter-spacing: 1.4px; font-weight: 950; color: var(--green-dark); margin-bottom: 16px; }
-.history-match-number { font-size: 10px; font-weight: 850; color: var(--green); background: var(--green-soft); border-radius: 6px; padding: 4px 8px; white-space: nowrap; }
+/* 19. PRINT THE TOURNAMENT BRACKET
+   ========================================================= */
 
-.brand-logo {
-  display: block;
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-  flex-shrink: 0;
+@page {
+  size: landscape;
+  margin: 10mm;
 }
 
-@media (max-width: 560px) {
-  .brand-logo {
-    width: 39px;
-    height: 39px;
-  }
-}
-.sport-section-heading { margin-top: 25px; }
-.sport-options {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-.sport-option {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 72px;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #fffef9;
-  color: var(--ink);
-  font-size: 12px;
-  font-weight: 800;
-  cursor: pointer;
-}
-.sport-option input {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-.sport-option:has(input:checked) {
-  border: 2px solid var(--green);
-  background: var(--green-soft);
-  box-shadow: inset 0 0 0 1px rgba(84,106,62,.04);
-}
-.sport-option:has(input:focus-visible) {
-  outline: 3px solid rgba(217,93,57,.4);
-  outline-offset: 3px;
-}
-.sport-thumb {
-  display: block;
-  width: 38px;
-  height: 38px;
-  object-fit: contain;
-  flex: 0 0 38px;
-}
-.custom-sport-field { margin-top: 16px; }
-.custom-sport-field[hidden] { display: none !important; }
-.custom-sport-field input {
-  width: 100%;
-  min-height: 47px;
-  border: 1px solid #d8cdb5;
-  background: #fffef9;
-  border-radius: 10px;
-  padding: 12px 14px;
-  color: var(--ink);
-}
-.custom-sport-field input:focus {
-  border-color: var(--rust);
-  outline: 3px solid rgba(217,93,57,.12);
-}
-
-.champion-trophy {
-    width: 35px;
-    height: 35px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-}
-.button { transition: none; }
-.button:hover:not(:disabled) { transform: none; }
-.welcome-art { order: 0; }
-.welcome-copy { order: 1; }
-.welcome-screen { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); }
-.welcome-art { border: 0; background: var(--green); }
-.welcome-art-image { object-fit: contain; padding: 22px; }
-.topbar-note { color: var(--green-dark); }
-.tabs { border-bottom-color: var(--green); }
-.tab.active { color: var(--green-dark); border-bottom-color: var(--rust); }
-.progress-fill { background: var(--rust); }
-.match-card { border-top: 3px solid var(--green); }
-.match-card.completed-card { border-top-color: var(--rust); }
-.winner-button { border-color: var(--green); }
-.winner-button:hover:not(:disabled) { background: var(--green-soft); }
-
-/* Print only the bracket, with a clean landscape layout. */
-@page { size: landscape; margin: 10mm; }
 @media print {
-  html, body, .app-shell { background: #fff !important; min-height: 0 !important; }
-  body { font-size: 10pt; color: #111; }
-  .topbar, .footer, .header-actions, .progress-area, .tabs,
-  .panel-intro, .bracket-hint, #historyPanel, #searchPanel,
-  #championResult, .toast, .confirm-dialog { display: none !important; }
-  main { max-width: none !important; width: 100% !important; margin: 0 !important; }
-  #welcomeScreen, #setupScreen, #teamsScreen { display: none !important; }
-  #tournamentScreen { display: block !important; padding: 0 !important; }
-  .tournament-header {
-    display: block !important; padding: 0 0 8mm !important;
-    border: 0 !important; background: #fff !important;
+  html,
+  body,
+  .app-shell {
+    min-height: 0 !important;
+    background: #fff !important;
   }
-  .tournament-heading-copy h1 { font-size: 20pt !important; margin-bottom: 2mm !important; }
-  .tournament-heading-copy .eyebrow { color: #333 !important; }
-  .page-description { color: #333 !important; }
-  #bracketPanel { display: block !important; padding: 0 !important; border: 0 !important; }
-  .bracket-scroll { overflow: visible !important; border: 0 !important; background: #fff !important; }
+
+  body {
+    color: #111;
+    font-size: 10pt;
+  }
+
+  .topbar,
+  .footer,
+  .header-actions,
+  .progress-area,
+  .tabs,
+  .panel-intro,
+  .bracket-hint,
+  #historyPanel,
+  #searchPanel,
+  #championResult,
+  .toast,
+  .confirm-dialog {
+    display: none !important;
+  }
+
+  main {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  #welcomeScreen,
+  #setupScreen,
+  #teamsScreen {
+    display: none !important;
+  }
+
+  #tournamentScreen {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  .tournament-header {
+    display: block !important;
+    padding: 0 0 8mm !important;
+    border: 0 !important;
+    background: #fff !important;
+  }
+
+  .tournament-heading-copy h1 {
+    margin-bottom: 2mm !important;
+    font-size: 20pt !important;
+  }
+
+  .tournament-heading-copy .eyebrow {
+    color: #333 !important;
+  }
+
+  .page-description {
+    color: #333 !important;
+  }
+
+  #bracketPanel {
+    display: block !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  .bracket-scroll {
+    overflow: visible !important;
+    border: 0 !important;
+    background: #fff !important;
+  }
+
   .bracket-canvas {
-    transform: scale(.72);
+    transform: scale(0.72);
     transform-origin: top left;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
-  .match-card, .team-leaf-card, .champion-card {
+
+  .match-card,
+  .team-leaf-card,
+  .champion-card {
     break-inside: avoid;
     box-shadow: none !important;
   }
-  .winner-actions { display: none !important; }
-  .winner-path-edge { stroke: #b53e22 !important; }
-  * { animation: none !important; transition: none !important; }
-}
-@media (max-width: 700px) {
-  .sport-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .welcome-screen { grid-template-columns: 1fr; }
-  .welcome-art { order: 0; }
-  .welcome-copy { order: 1; }
-}
 
+  .winner-actions {
+    display: none !important;
+  }
 
+  .winner-path-edge {
+    stroke: #b53e22 !important;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
