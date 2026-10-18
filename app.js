@@ -189,7 +189,7 @@
     if (completed) {
       const championCard = document.createElement('div'); championCard.className = 'champion-card'; championCard.style.left = `${nodeX(1, tree) + 250}px`; championCard.style.top = `${nodeCenterY(1, tree) - 88}px`;
       const icon = document.createElement('div'); icon.className = 'champion-icon'; 
-      const trophy = document.createElement('img'); trophy.src = 'assets/ardentri-trophy.png'; trophy.alt = 'Tournament Trophy'; trophy.className = 'champion-trophy'; icon.appendChild(trophy);
+      const trophy = document.createElement('img'); trophy.src = 'ardentri-trophy.png'; trophy.alt = 'Tournament Trophy'; trophy.className = 'champion-trophy'; icon.appendChild(trophy);
       const label = document.createElement('span'); label.className = 'champion-heading'; label.textContent = 'TOURNAMENT CHAMPION';
       const name = document.createElement('strong'); name.className = 'champion-name'; name.textContent = tree.getChampion();
       const tournament = document.createElement('span'); tournament.className = 'champion-tournament-name'; tournament.textContent = state.tournamentName;
