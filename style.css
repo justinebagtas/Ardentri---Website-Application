@@ -1396,12 +1396,6 @@ main {
   .welcome-copy {
     max-width: 700px;
   }
-  .welcome-art {
-    min-height: 350px;
-    max-width: 600px;
-    width: 100%;
-    margin: auto;
-  }
   .art-orbit.orbit-one {
     width: 320px;
   }
@@ -1461,9 +1455,7 @@ main {
   .intro-copy {
     font-size: 15px;
   }
-  .welcome-art {
-    min-height: 315px;
-  }
+  
   .tree-illustration {
     transform: scale(.87);
   }
@@ -1565,23 +1557,12 @@ main {
   flex-shrink: 0;
 }
 
-.welcome-art-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;       
-  border-radius: 30px;     
-}
-
 @media (max-width: 560px) {
   .brand-logo {
     width: 39px;
     height: 39px;
   }
 }
-
-
-/* Ardentri sport selector: compact image-led cards that remain easy to replace. */
 .sport-section-heading { margin-top: 25px; }
 .sport-options {
   display: grid;
@@ -1651,8 +1632,6 @@ main {
     display: block;
     margin: 0 auto;
 }
-
-/* Static, sportier layout: no movement effects on controls. */
 .button { transition: none; }
 .button:hover:not(:disabled) { transform: none; }
 .welcome-art { order: 0; }
